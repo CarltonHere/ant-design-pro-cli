@@ -5,7 +5,7 @@ const inquirer = require('inquirer');
 const ora = require('ora');
 const chalk = require('chalk');
 const semver = require('semver');
-const getNpmRegistry = require('getnpmregistry');
+const getNpmRegistry = require('./getnpmregistry');
 
 const spinner = ora();
 
@@ -24,7 +24,7 @@ const fetchPkgVersion = async () => {
     versions,
     'dist-tags': { latest },
   } = await data.json();
-  
+
   const versionsList = Object.keys(versions);
   const maxMajor = semver.parse(latest).major;
   const uniqueVersions = [];
